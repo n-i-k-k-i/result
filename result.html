@@ -5,41 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body><center id="center">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div>
-    <h1 style="color: orangered ;">Result</h1>
-    <h2>Enter yout Name to see your Result</h2>
-    <label for="name">Name:-</label><br>
-    <input type="text" id="name" placeholder="Enter your Name"><br>
-    <label for="number">UUCMS number:-</label>
-    <input type="text" id="num" min="12" max="12" placeholder="Enter your UUCMS number"><br>
-    <label for="course">Course Name:-</label><br>
-    <input type="text" id="course" placeholder="Enter your Course Name" pattern="BCA,BBA,BCOM"><br>
-    <label for="sem">Semester:-</label><br>
-    <input type="number" id="sem" placeholder="Enter your Semester " maxlength="1" pattern="1,2,3,4,5,6" ><br><br>
-    <button onclick="result()" id="result">submit</button>
-    <p id="result"></p>
-    </div></center>
-    <style>
-        img{
-            width: 1000px;
+<body>
+    <center id="center">
+        <br><br><br><br><br>
+        <div>
+            <h1 style="color: orangered;">Result</h1>
+            <h2>Enter your Name to see your Result</h2>
+            <label>Name: </label>
+            <input type="text" id="name1" placeholder="Enter your Name"><br><br>
+            <label>UUCMS number: </label>
+            <input type="text" id="num" placeholder="Enter your UUCMS number"><br><br>
+            <label>Course Name: </label>
+            <input type="text" id="course" placeholder="Enter your Course Name"><br><br>
+            <label>Semester: </label>
+            <input type="number" id="sem" placeholder="Enter your Semester" maxlength="1" pattern="1,2,3,4,5,6"><br><br>
+            <button onclick="result()" id="result2">Submit</button>
+            <p id="result1"></p>
+        </div>
+    </center>
 
+    <style>
+        img {
+            width: 1000px;
         }
-        body{
-            background-image: url(img/Mr-Bean.jpg); 
+        body {
+            background-image: url(img/Mr-Bean.jpg);
             justify-content: center;
             align-items: center;
             width: 1500px;
             height: 500px;
             top: 50%;
-            bottom: 50%;      
+            bottom: 50%;
         }
-        div{
+        div {
             text-align: center;
             font-family: Georgia, 'Times New Roman', Times, serif;
             width: 300px;
@@ -47,61 +45,42 @@
             border: 1px solid whitesmoke;
             box-shadow: 0px 0px 3px 5px;
             margin: 20px;
-            padding: 20px;    
+            padding: 20px;
         }
-        #result{
+        #result2 {
             background-color: goldenrod;
             color: aliceblue;
-            
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-
         }
     </style>
+
     <script>
         function result() {
-            var name=document.getElementById("name").value;
-            var result=document.getElementById("result");
-            var num=document.getElementById("num").value;
-            var course=document.getElementById("course").value;
-            var semester=document.getElementById("sem").value;
-            
+            var name = document.getElementById("name1").value.trim();
+            var num = document.getElementById("num").value.trim();
+            var course = document.getElementById("course").value.trim();
+            var semester = document.getElementById("sem").value.trim();
+            var resultMsg = document.getElementById("result1");
 
-            if(name===""){
-                alert("Please Enter Your Name");
-                return false ;
+           
+            if (name === '' || num === '' || course === '' || semester === '') {
+                alert("Please fill in all the fields.");
+                return; 
             }
-            
-            if(num===""){
-                alert("please Enter your UUCMS Number");
-                return false;
+            var marks = Math.random() * 100;
+            if (marks == 0 || marks < 34) {
+                resultMsg.innerHTML = name + " is fail " + marks.toFixed(2);
+            } else if (marks == 35 || marks < 59) {
+                resultMsg.innerHTML = name + " is second class " + marks.toFixed(2);
+            } else if (marks == 60 || marks < 79) {
+                resultMsg.innerHTML = name + " is first class " + marks.toFixed(2);
+            } else if (marks == 80 || marks < 100) {
+                resultMsg.innerHTML = name + " is Distinction " + marks.toFixed(2);
             }
-            if(course===""){
-                alert("please Enter your Course Name");
-                return false;
-            }
-            if(semester===""){
-                alert("please Enter your Semester");
-                return false;
-            }
-            return true;
-
-            var marks = Math.random()*100;
-            if(marks==0 ||marks<35 ){
-                result.innerHTML= name+" "+ "your failed in"+" "+course+" "+semester+" "+marks.toFixed(2);}
-            else if(marks==35 || marks<59){
-                result.innerHTML=name+" "+"Second class in"+" "+course+" "+semester+" "+marks.toFixed(2);
-            }
-            else if(marks==60|| marks<79){
-                result.innerHTML=name+" "+"First class in"+" "+course+" "+semester+" "+marks.toFixed(2);  
-            }
-            else if(marks==80|| marks==100){
-                result.innerHTML=name+" "+"Distinction in"+" "+course+" "+semester+" "+marks.toFixed(2);  
-            }
-            }
-            
+        }
     </script>
 </body>
 </html>
